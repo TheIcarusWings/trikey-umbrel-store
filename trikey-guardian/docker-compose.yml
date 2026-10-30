@@ -11,7 +11,7 @@ services:
   server:
     # The store copy of this file (.github/workflows/umbrel-store.yml) pins the image by
     # digest on release: ghcr.io/theicaruswings/trikey-guardian:<version>@sha256:...
-    image: ghcr.io/theicaruswings/trikey-guardian:0.1.1-alpha@sha256:92232194a1543d9419a10e9080aed3a44121fc68c3cabd65ac6aff79c9630244
+    image: ghcr.io/theicaruswings/trikey-guardian:0.1.2-alpha@sha256:3b533f0e7cd5682c8ce2ed4eaff2070da354dce8ae2b987784d62693b1481f80
     init: true
     restart: on-failure
     volumes:
@@ -38,3 +38,7 @@ services:
       # The guardian accepts all five (apps/guardian/src/config.ts maps mainnet to bitcoin and
       # testnet4 to testnet), so no mapping is needed.
       BITCOIN_NETWORK: ${APP_BITCOIN_NETWORK}
+      # umbrelOS's per-app seed (hex HMAC-SHA256 of the Umbrel's seed and the app id, 64 characters),
+      # mixed into every new key-3 setup seed next to the guardian's OS draw and the browser's bytes
+      # (DESIGN.md "Entropy", trikey/guardian-seed/v1). Never logged; existing setups are unchanged.
+      TRIKEY_EXTRA_ENTROPY: ${APP_SEED}
