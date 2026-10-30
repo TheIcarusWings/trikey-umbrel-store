@@ -12,8 +12,8 @@ The [Umbrel](https://umbrel.com) community app store for **Trikey Guardian**: ke
 3. Open the **Trikey** store and install **Trikey Guardian**. It needs the **Bitcoin Node** and
    **Electrs** apps; Umbrel installs them if they are missing.
 
-The app installs `v0.1.0-alpha`, pinned by digest. Test networks only (testnet4, signet, regtest):
-set the Bitcoin Node app to one of them before installing. It is not for real money.
+The app installs `v0.1.1-alpha`, pinned by digest.
+Pre-alpha and not audited: on mainnet, use only an amount you can afford to lose.
 
 ## Where this comes from
 

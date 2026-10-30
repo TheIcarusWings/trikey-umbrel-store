@@ -11,10 +11,13 @@ services:
   server:
     # The store copy of this file (.github/workflows/umbrel-store.yml) pins the image by
     # digest on release: ghcr.io/theicaruswings/trikey-guardian:<version>@sha256:...
-    image: ghcr.io/theicaruswings/trikey-guardian:0.1.0-alpha@sha256:ecae8c5624adf04aff917b808a8a8f4ec9b3f0c1376ef2fd9dc2d4a371532d1b
+    image: ghcr.io/theicaruswings/trikey-guardian:0.1.1-alpha@sha256:92232194a1543d9419a10e9080aed3a44121fc68c3cabd65ac6aff79c9630244
     init: true
     restart: on-failure
     volumes:
+      # data/ ships in the app folder (data/.gitkeep), so Umbrel creates it owned by its user (1000), the
+      # user the image runs as. A folder Docker made on its own would be root's, and the guardian could not
+      # write its state.
       - ${APP_DATA_DIR}/data:/data
     environment:
       PORT: 3000
