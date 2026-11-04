@@ -11,7 +11,7 @@ services:
   server:
     # The store copy of this file (.github/workflows/umbrel-store.yml) pins the image by
     # digest on release: ghcr.io/theicaruswings/trikey-guardian:<version>@sha256:...
-    image: ghcr.io/theicaruswings/trikey-guardian:0.1.10-alpha@sha256:ef6f624b63fb8c19c191e359e33d5b05e0c90485e9f0768bf0ec914bea13f37b
+    image: ghcr.io/theicaruswings/trikey-guardian:0.1.11-alpha@sha256:8d28139194d85003e3bdb877f23666ef86b0daed7e26220635c81805c2843a80
     init: true
     restart: on-failure
     volumes:
@@ -22,6 +22,9 @@ services:
     environment:
       PORT: 3000
       TRIKEY_DATA_DIR: /data
+      # Umbrel's app_proxy login guards the web UI, so first-run setup needs no setup code (plain Docker's
+      # default, packaging/compose/README.md).
+      TRIKEY_PLATFORM: umbrel
       # Electrs (dependency "electrs")
       ELECTRUM_HOST: ${APP_ELECTRS_NODE_IP}
       ELECTRUM_PORT: ${APP_ELECTRS_NODE_PORT}
