@@ -11,7 +11,7 @@ services:
   server:
     # The store copy of this file (.github/workflows/umbrel-store.yml) pins the image by
     # digest on release: ghcr.io/theicaruswings/trikey-guardian:<version>@sha256:...
-    image: ghcr.io/theicaruswings/trikey-guardian:0.1.13-alpha@sha256:2a60d9d533820361531cde536482a162d6e4bcc7e7063c387c20d281f38deb65
+    image: ghcr.io/theicaruswings/trikey-guardian:0.1.14-alpha@sha256:702fd6f15df87b6c76fbf48f9e0b89075662ad505881a65debebf40d142a79df
     init: true
     restart: on-failure
     volumes:
